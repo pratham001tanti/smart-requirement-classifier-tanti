@@ -30,8 +30,8 @@ This Streamlit app classifies software requirements into **Functional** or **Non
 
 1. Clone the repo
 2. Create `.env` file with:
-AZURE_OPENAI_KEY=4HoZ7TDCttMZQvggQLPnN6eppfTaMaBdIeTIT4iLNuhAp0S22RoCJQQJ99BFACfhMk5XJ3w3AAAAACOGUPka
-AZURE_OPENAI_ENDPOINT=https://prath-mbmrvxc2-swedencentral.cognitiveservices.azure.com/
+AZURE_OPENAI_KEY=<Enter your Key>
+AZURE_OPENAI_ENDPOINT=<Enter the address>
 AZURE_OPENAI_DEPLOYMENT=gpt-4o
 AZURE_OPENAI_API_VERSION=2024-12-01-preview
 3. install dependencies
