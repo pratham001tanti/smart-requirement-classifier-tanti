@@ -7,9 +7,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 openai.api_type = "azure"
-openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")  # Example: https://your-resource.openai.azure.com
-openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")  # Example: 2023-05-15
-openai.api_key = os.getenv("AZURE_OPENAI_KEY")  # Your Azure OpenAI key
+openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
+openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
+openai.api_key = os.getenv("AZURE_OPENAI_KEY")
 
 deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 
@@ -55,7 +55,7 @@ if uploaded_file is not None:
                         )
                         output = response.choices[0].message['content']
                         results.append(output)
-                        print(f"🤖 GPT Output: {output}")  # ✅ Correct: inside the try block
+                        print(f"🤖 GPT Output: {output}")
 
                         if "[" not in output or "]" not in output:
                             output = "[Unknown] - Format not matched"
