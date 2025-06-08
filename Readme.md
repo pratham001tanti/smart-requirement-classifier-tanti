@@ -38,6 +38,7 @@ AZURE_OPENAI_ENDPOINT=Enter the address
 AZURE_OPENAI_DEPLOYMENT=gpt-4o
 
 AZURE_OPENAI_API_VERSION=2024-12-01-preview
+
 3. install dependencies
 pip install -r requirments.text
 4. Run the app:
