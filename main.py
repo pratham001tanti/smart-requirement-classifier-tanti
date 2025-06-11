@@ -1,15 +1,15 @@
 import pandas as pd
-import openai
+from openai import OpenAI
 
-openai.api_key = "Pratham@2305"  # Replace with your real key
+client = OpenAI(api_key="Pratham@2305")
+
+  # Replace with your real key
 
 def ask_gpt(text):
     prompt = f"""Classify this requirement as either 'Functional' or 'Non-Functional' and give a short summary:\n\n"{text}"\n\nReturn format: [Type] - Summary"""
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.choices[0].message['content']
+    response = client.chat.completions.create(model="gpt-4",
+    messages=[{"role": "user", "content": prompt}])
+    return response.choices[0].message.content
 
 # Load data
 df = pd.read_csv("requirements.csv")

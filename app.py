@@ -1,4 +1,13 @@
-import openai
+from openai import AzureOpenAI
+import os
+from dotenv import load_dotenv
+import streamlit as st
+import pandas as pd
+load_dotenv()
+
+client = AzureOpenAI(azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+api_key=os.getenv("AZURE_OPENAI_KEY"))
 import streamlit as st
 import pandas as pd
 from azure.core.credentials import AzureKeyCredential
@@ -6,10 +15,6 @@ from azure.core.credentials import AzureKeyCredential
 import os
 from dotenv import load_dotenv
 load_dotenv()
-openai.api_type = "azure"
-openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
-openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
-openai.api_key = os.getenv("AZURE_OPENAI_KEY")
 
 deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 
@@ -49,11 +54,9 @@ if uploaded_file is not None:
                     """
 
                     try:
-                        response = openai.ChatCompletion.create(
-                            engine="gpt-4o",
-                            messages=[{"role": "user", "content": prompt}]
-                        )
-                        output = response.choices[0].message['content']
+                        response = client.chat.completions.create(model="gpt-4o",
+                        messages=[{"role": "user", "content": prompt}])
+                        output = response.choices[0].message.content
                         results.append(output)
                         print(f"🤖 GPT Output: {output}")
 
